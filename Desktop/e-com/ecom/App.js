@@ -24,6 +24,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import NavigationS from './src/Navigation/navigation';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -63,25 +64,9 @@ function App(): JSX.Element {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <View
-          style={{
 
-            height: '100%',
-            backgroundColor: 'red',
-          }}
-        >
-          <Text>hello</Text>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+     <NavigationS />
+
   );
 }
 
