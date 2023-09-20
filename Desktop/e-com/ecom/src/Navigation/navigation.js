@@ -5,13 +5,15 @@ import {
   useNavigationContainerRef,
 } from '@react-navigation/native';
 import PublicRoute from './publicRoute';
+import PrivateRoute from './privateRoute';
 
 const NavigationS = () => {
 
   return (
     <NavigationContainer  options={{headerShown: false}}>
       {/* {isLoggedIn ? <privateRoute /> : <publicRoute />} */}
-      <PublicRoute />
+      {/* <PublicRoute /> */}
+      <PrivateRoute />
       {/* <PublicRoute /> */}
     </NavigationContainer>
   )

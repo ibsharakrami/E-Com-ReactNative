@@ -2,6 +2,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
 const run = require('../assets/img/run5.jpg');
 const run1 = require('../assets/img/run1.jpg');
 const run2 = require('../assets/img/run2.jpg');
@@ -9,7 +10,8 @@ const run3 = require('../assets/img/run3.jpg');
 const run4 = require('../assets/img/run4.jpg');
 const nike = require('../assets/img/nike.png');
 
-const login = () => {
+const Login = () => {
+  const navigation = useNavigation();
   return (
     <LinearGradient colors={['#B9B4C7', '#fff', '#F0F0F0']} style={styles.linearGradient}>
     <View style={styles.container}>
@@ -32,7 +34,7 @@ const login = () => {
 
 
     </View>
-    <TouchableOpacity style={{width:wp('90%'),height:hp('7%'),alignSelf:'center',backgroundColor:'#000',borderRadius:15,justifyContent:'center',alignItems:'center'}}>
+    <TouchableOpacity style={{width:wp('90%'),height:hp('7%'),alignSelf:'center',backgroundColor:'#000',borderRadius:15,justifyContent:'center',alignItems:'center'}} onPress={()=>{navigation.navigate('Login1')}}>
     <Text style={{fontSize:16,fontWeight:'bold',color:'#fff'}}>TAKE THE FIRST STEP</Text>
       </TouchableOpacity>
 
@@ -40,7 +42,7 @@ const login = () => {
   )
 }
 
-export default login;
+export default Login;
 
 const styles = StyleSheet.create({
   linearGradient: {

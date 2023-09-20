@@ -4,7 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Home from '../private/Home';
 
 
-export default function privateRoute() {
+export default function PrivateRoute() {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator

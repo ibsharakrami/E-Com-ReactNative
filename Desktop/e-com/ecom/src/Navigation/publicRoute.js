@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import login from '../public/login';
 import register from '../public/register';
+import login1 from '../public/login1';
 
 
 export default function PublicRoute() {
@@ -15,6 +16,7 @@ export default function PublicRoute() {
        }}
     initialRouteName="Login">
     <Stack.Screen name="Login" component={login} />
+    <Stack.Screen name="Login1" component={login1} />
     <Stack.Screen name="Signup" component={register} />
     {/* <Stack.Screen
       name="Settings"
