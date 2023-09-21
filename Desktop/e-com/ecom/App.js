@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
+
 import {
   SafeAreaView,
   ScrollView,
@@ -16,59 +16,30 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import {Provider} from 'react-redux';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+
 import NavigationS from './src/Navigation/navigation';
+import Store from './src/app/store';
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
 
-function Section({children, title}: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+
+
+
+const App = () => {
+  if (Store) {
+    const state = Store.getState();
+    console.log('store===>',state)
+    // do something with the state
+  }
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
+    <Provider store={Store}>
+      <NavigationS />
+    </Provider>
   );
-}
+};
 
-function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-
-     <NavigationS />
-
-  );
-}
 
 const styles = StyleSheet.create({
   sectionContainer: {

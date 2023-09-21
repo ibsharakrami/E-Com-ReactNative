@@ -6,14 +6,18 @@ import {
 } from '@react-navigation/native';
 import PublicRoute from './publicRoute';
 import PrivateRoute from './privateRoute';
-
+import {useSelector} from 'react-redux';
+import { selectCurrentToken } from '../feature/auth/authSlice';
 const NavigationS = () => {
+  const navRef = useNavigationContainerRef();
+  const token = useSelector(selectCurrentToken)
+  console.log("tokenid===>",token)
 
   return (
-    <NavigationContainer  options={{headerShown: false}}>
-      {/* {isLoggedIn ? <privateRoute /> : <publicRoute />} */}
+    <NavigationContainer ref={navRef} options={{headerShown: false}}>
+      {token ? <PrivateRoute /> : <PublicRoute />}
       {/* <PublicRoute /> */}
-      <PrivateRoute />
+      {/* <PrivateRoute /> */}
       {/* <PublicRoute /> */}
     </NavigationContainer>
   )
