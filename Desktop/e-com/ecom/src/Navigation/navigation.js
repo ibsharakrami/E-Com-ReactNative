@@ -11,7 +11,7 @@ import { selectCurrentToken } from '../feature/auth/authSlice';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const NavigationS = () => {
   const navRef = useNavigationContainerRef();
-  const token = useSelector(selectCurrentToken)
+  const token = useSelector(selectCurrentToken);
   console.log("tokenid===>",token)
 
   const dispatch = useDispatch();
@@ -22,7 +22,8 @@ const NavigationS = () => {
       try {
         const storedToken = await AsyncStorage.getItem('authToken');
         if (storedToken) {
-          dispatch(setCredentials({ accessToken: storedToken }));
+          // Dispatch the action to set the token in Redux
+          dispatch({ type: 'auth/setCredentials', payload: { accessToken: storedToken } });
         }
       } catch (error) {
         // Handle AsyncStorage error (if needed)
@@ -32,23 +33,22 @@ const NavigationS = () => {
 
     loadTokenFromStorage();
   }, [dispatch]);
-
   // Handle token expiration and logout
-  useEffect(() => {
-    const handleTokenExpiration = async () => {
-      // Check if the token is expired (you'll need to implement this logic)
-      const isTokenExpired = false; // Replace with actual logic
+  // useEffect(() => {
+  //   const handleTokenExpiration = async () => {
+  //     // Check if the token is expired (you'll need to implement this logic)
+  //     const isTokenExpired = false; // Replace with actual logic
 
-      if (isTokenExpired) {
-        // Remove the expired token from AsyncStorage
-        await AsyncStorage.removeItem('authToken');
-        // Dispatch a logout action
-        dispatch(logOut());
-      }
-    };
+  //     if (isTokenExpired) {
+  //       // Remove the expired token from AsyncStorage
+  //       await AsyncStorage.removeItem('authToken');
+  //       // Dispatch a logout action
+  //       dispatch(logOut());
+  //     }
+  //   };
 
-    handleTokenExpiration();
-  }, [dispatch]);
+  //   handleTokenExpiration();
+  // }, [dispatch]);
 
   return (
     <NavigationContainer ref={navRef} options={{headerShown: false}}>
