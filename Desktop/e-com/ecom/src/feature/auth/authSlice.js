@@ -58,3 +58,28 @@ export const selectCurrentToken = (state) => state.auth.token
 //     }
 //   }
 // );
+// export const logOut = createAsyncThunk(
+//   'auth/logout',
+//   async (_, { dispatch }) => {
+//     // Remove tokens from AsyncStorage
+//     try {
+//       await AsyncStorage.removeItem('authToken');
+//       await AsyncStorage.removeItem('refreshToken');
+//     } catch (error) {
+//       console.error('Error removing tokens from AsyncStorage:', error);
+//     }
+
+//     // You can add additional logic here to clear user data or perform other actions
+
+//     // Note: If your server logs the user out when visiting a URL,
+//     // you can trigger that action here (e.g., make a request to the logout URL).
+//     try {
+//       // Assuming visiting the URL logs the user out on the server
+//       await fetch('https://e-com-auof.onrender.com/logout', {
+//         method: 'GET', // or 'POST' depending on your server's requirements
+//       });
+//     } catch (error) {
+//       console.error('Error logging out on the server:', error);
+//     }
+//   }
+// );

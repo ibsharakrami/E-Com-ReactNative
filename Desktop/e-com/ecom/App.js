@@ -34,6 +34,7 @@ const App = () => {
   }
   return (
     <Provider store={Store}>
+    
       <NavigationS />
     </Provider>
   );
